@@ -5,7 +5,7 @@ def load_data(file_path):
     data = []
     headers = None
     try:
-        # Attempt to open and read the file
+        #open and read the file
         with open(file_path, mode='r', newline='') as csvfile:
             reader = csv.reader(csvfile)
             headers = next(reader)  # Read the header row
@@ -23,7 +23,7 @@ def linear_search(data, bookName):
         if not data:
             raise ValueError("No data available to search.")
 
-        # Perform the linear search with case-insensitive matching
+        # Perform the linear search
         for row in data:
             if str(row[0]).strip().lower() == bookName.strip().lower():
                 return row  # Book found, return the row
@@ -62,8 +62,7 @@ def sort_books_by_pages(file_path):
         return []
     
     try:
-        # Assuming the page count is in the 3rd column (index 2) and is numeric
-        sorted_data = sorted(data, key=lambda row: int(row[2]), reverse=False)  # Change reverse=True for descending order
+        sorted_data = sorted(data, key=lambda row: int(row[2]), reverse=False)
         return sorted_data
     except IndexError:
         print("Error: Page count column does not exist.")
